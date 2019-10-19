@@ -1,170 +1,83 @@
 var Layout = function () {
-    
-    // detect mobile device
-    var isMobileDevice = function() {
-        return  ((
-            navigator.userAgent.match(/Android/i) ||
-            navigator.userAgent.match(/BlackBerry/i) ||
-            navigator.userAgent.match(/iPhone|iPad|iPod/i) ||
-            navigator.userAgent.match(/Opera Mini/i) ||
-            navigator.userAgent.match(/IEMobile/i)
-        ) ? true : false);
-    }
-
-    // handle on page scroll
-    var handleHeaderOnScroll = function() {
-        if ($(window).scrollTop() > 60) {
-            $("body").addClass("page-on-scroll");
-        } else {
-            $("body").removeClass("page-on-scroll");
-        }
-    }
-
-    // Handle Header
-    var handleOnePageHeader = function() {
-        // jQuery to collapse the navbar on scroll
-        if ($('.navbar').offset().top > 150) {
-            $('.navbar-fixed-top').addClass('top-nav-collapse');
-        }
-        $(window).scroll(function() {
-            if ($('.navbar').offset().top > 150) {
-                $('.navbar-fixed-top').addClass('top-nav-collapse');
-            } else {
-                $('.navbar-fixed-top').removeClass('top-nav-collapse');
-            }
-        });
-
-        var $offset = 0;
-        $offset = $(".navbar-fixed-top").height()-20;
-        
-        // jQuery for page scrolling feature - requires jQuery Easing plugin
-        $('.js_nav-item a').bind('click', function(event) {
-            var $position = $($(this).attr('href')).offset().top;
-            $('html, body').stop().animate({
-                scrollTop: $position - $offset
-            }, 600);
-            event.preventDefault();
-        });
-
-        var $scrollspy = $('body').scrollspy({target: '.navbar-fixed-top', offset: $offset+2});
-
-        // Collapse Navbar When It's Clickicked
-        $(window).scroll(function() {
-            $('.navbar-collapse.in').collapse('hide');
-        });
-    }
-
-    // handle carousel
-    var handleCarousel = function() {
-        var $item = $('.carousel .item'); 
-        var $wHeight = $(window).height();
-        $item.eq(0).addClass('active');
-        $item.height($wHeight); 
-        $item.addClass('full-screen');
-
-        $('.carousel img').each(function() {
-            var $src = $(this).attr('src');
-            var $color = $(this).attr('data-color');
-            $(this).parent().css({
-                'background-image' : 'url(' + $src + ')',
-                'background-color' : $color
+    var t = function () {
+            $(window).scrollTop() > 60 ? $("body").addClass("page-on-scroll") : $("body").removeClass("page-on-scroll")
+        },
+        o = function () {
+            $(".navbar").offset().top > 150 && $(".navbar-fixed-top").addClass("top-nav-collapse"), $(window).scroll(function () {
+                console.clear()
+                $(".navbar").offset().top > 150 ? $(".navbar-fixed-top").addClass("top-nav-collapse") : $(".navbar-fixed-top").removeClass("top-nav-collapse")
             });
-            $(this).remove();
-        });
-
-        $(window).on('resize', function (){
-            $wHeight = $(window).height();
-            $item.height($wHeight);
-        });
-    }
-
-    // handle group element heights
-    var handleHeight = function() {
-       $('[data-auto-height]').each(function() {
-            var parent = $(this);
-            var items = $('[data-height]', parent);
-            var height = 0;
-            var mode = parent.attr('data-mode');
-            var offset = parseInt(parent.attr('data-offset') ? parent.attr('data-offset') : 0);
-
-            items.each(function() {
-                if ($(this).attr('data-height') == "height") {
-                    $(this).css('height', '');
-                } else {
-                    $(this).css('min-height', '');
-                }
-
-                var height_ = (mode == 'base-height' ? $(this).outerHeight() : $(this).outerHeight(true));
-                if (height_ > height) {
-                    height = height_;
-                }
+            var t = 0;
+            t = $(".navbar-fixed-top").height() - 50, $(".js_nav-item a").bind("click", function (o) {
+                var a = $($(this).attr("href")).offset().top;
+                $("html, body").stop().animate({
+                    scrollTop: a - t
+                }, 600), o.preventDefault()
             });
-
-            height = height + offset;
-
-            items.each(function() {
-                if ($(this).attr('data-height') == "height") {
-                    $(this).css('height', height);
-                } else {
-                    $(this).css('min-height', height);
-                }
+            $("body").scrollspy({
+                target: ".navbar-fixed-top",
+                offset: t + 2
             });
-
-            if(parent.attr('data-related')) {
-                $(parent.attr('data-related')).css('height', parent.height());
-            }
-       });
-    }
-
-    // Handle Work Popup
-    var handleWorkPopup = function() {
-        var overlay = $('.work-popup-overlay'),
-            close = $('.work-popup-close'),
-            trigger = $('.work-popup-trigger');
-
-        trigger.on('click', function() {
-            $(this).find('.work-popup-overlay').removeClass('work-popup-overlay-show');
-            $(this).find('.work-popup-overlay').addClass('work-popup-overlay-show');
-        });
-
-        close.on('click', function(e) {
-            e.stopPropagation();
-            overlay.removeClass('work-popup-overlay-show');
-        });
-    }
-
+            $(window).scroll(function () {
+                $(".navbar-collapse.in").collapse("hide")
+            })
+        },
+        a = function () {
+            var t = $(".carousel .item"),
+                o = $(window).height();
+            t.eq(0).addClass("active"), t.height(o), t.addClass("full-screen"), $(".carousel img").each(function () {
+                var t = $(this).attr("src"),
+                    o = $(this).attr("data-color");
+                $(this).parent().css({
+                    "background-image": "url(" + t + ")",
+                    "background-color": o
+                }), $(this).remove()
+            }), $(window).on("resize", function () {
+                o = $(window).height(), t.height(o)
+            })
+        },
+        e = function () {
+            $("[data-auto-height]").each(function () {
+                var t = $(this),
+                    o = $("[data-height]", t),
+                    a = 0,
+                    e = t.attr("data-mode"),
+                    i = parseInt(t.attr("data-offset") ? t.attr("data-offset") : 0);
+                o.each(function () {
+                    "height" == $(this).attr("data-height") ? $(this).css("height", "") : $(this).css("min-height", "");
+                    var t = "base-height" == e ? $(this).outerHeight() : $(this).outerHeight(!0);
+                    t > a && (a = t)
+                }), a += i, o.each(function () {
+                    "height" == $(this).attr("data-height") ? $(this).css("height", a) : $(this).css("min-height", a)
+                }), t.attr("data-related") && $(t.attr("data-related")).css("height", t.height())
+            })
+        },
+        i = function () {
+            var t = $(".work-popup-overlay"),
+                o = $(".work-popup-close"),
+                a = $(".work-popup-trigger");
+            a.on("click", function () {
+                $(this).find(".work-popup-overlay").removeClass("work-popup-overlay-show"), $(this).find(".work-popup-overlay").addClass("work-popup-overlay-show")
+            }), o.on("click", function (o) {
+                o.stopPropagation(), t.removeClass("work-popup-overlay-show")
+            })
+        };
     return {
         init: function () {
-            // initial setup for fixed header
-            handleHeaderOnScroll();
-            handleOnePageHeader(); // initial header
-            handleCarousel(); // initial setup for carousel
-            handleHeight(); // initial setup for group element height
-            handleWorkPopup(); // initial setup for group work popup
-            
-            // handle minimized header on page scroll
-            $(window).scroll(function() {
-                handleHeaderOnScroll();
-            });
+            t(), o(), a(), e(), i(), $(window).scroll(function () {
+                t()
+            })
         },
-
-        // To get the correct viewport width based on  http://andylangton.co.uk/articles/javascript/get-viewport-size-javascript/
-        getViewPort: function() {
-            var e = window,
-                a = 'inner';
-            if (!('innerWidth' in window)) {
-                a = 'client';
-                e = document.documentElement || document.body;
+        getViewPort: function () {
+            var t = window,
+                o = "inner";
+            return "innerWidth" in window || (o = "client", t = document.documentElement || document.body), {
+                width: t[o + "Width"],
+                height: t[o + "Height"]
             }
-
-            return {
-                width: e[a + 'Width'],
-                height: e[a + 'Height']
-            };
-        },
-    };
+        }
+    }
 }();
-
-$(document).ready(function() {
-    Layout.init();
+$(document).ready(function () {
+    Layout.init()
 });
