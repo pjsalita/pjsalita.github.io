@@ -815,7 +815,7 @@ fieldset[disabled] .btn-theme {
     padding: 12px 12px 12px 15px
   }
 
-  .header .nav-item-hover:after {
+  .header .nav-item-hover:hover:after, .page-on-scroll .header .nav-item-hover:after {
     position: absolute;
     top: 10px;
     left: 0;
