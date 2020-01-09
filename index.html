@@ -499,7 +499,7 @@
                         <img class="footer-logo" src="img/logo-dark.png" alt="Logo">
                     </div>
                     <div class="col-xs-6 text-right sm-text-left">
-                        <p class="margin-b-0">&copy; 2019 <a href="/">pjsalita.github.io</a></p>
+                        <p class="margin-b-0 text-danger">&copy; <span class="cyear text-danger"></span> <a href="/" class="text-danger">pjsalita.github.io</a></p>
                     </div>
                 </div>
                 <!--// end row -->
@@ -532,7 +532,12 @@
         <script src="js/components/progress-bar.min.js" type="text/javascript"></script>
         <script src="js/components/masonry.min.js" type="text/javascript"></script>
         <script src="js/components/wow.min.js" type="text/javascript"></script>
-
+        <script>
+            $(() => {
+                let date = new Date();
+                $('span.cyear').text(date.getFullYear())
+            })
+        </script>
     </body>
     <!-- END BODY -->
 </html>
