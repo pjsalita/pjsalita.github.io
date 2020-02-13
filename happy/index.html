@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Anniversary Euricka Ashley ♥</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+        body,
+        html {
+            background: #b81922 !important;
+        }
+
+        .jumbotron {
+            height: 100vh;
+            background: transparent;
+            z-index: 2;
+        }
+    </style>
+</head>
+
+<body style="display: none;">
+
+    <div class="text-center text-white position-relative d-flex flex-column justify-content-center align-items-center jumbotron">
+        <h1 class="display-4">Happy Anniversary<br /><span id="rainbow" class="">Euricka Ashley Matsuo Salita!</span>
+        </h1>
+        <p class="lead">Baby ko thank you for staying! Kahit sobrang ala kung kasweet sweet a tawu apagtyagaan mu ku pa rin hehehe.</p>
+        <p class="lead">Wish ko sana more love, happiness, and success kekatamu ❤😘💕</p>
+        <p class="lead">Sorry Baby kung makanini mu ing agawa ku, bawi ku po kapag miabe tana!!! <strong>ILOVEYOUSOMUUUUUCH!!!!!</strong></p>
+        <hr class="my-4">
+        <p>PS: Sana bawasan din ing kabusitan ampo pagka masungit! Hahaha</p>
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+            Click to kiss me!
+        </button>
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-body position-relative">
+                <img src="1.jpg" alt="" class="img-fluid kiss-me">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary ayoko">Ayoko!</button>
+              <button type="button" class="btn btn-danger kiss">Kissssssss!!!</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        var person = prompt("Who are you?");
+
+        if (person != null && (person.toLowerCase() == "euricka" || person.toLowerCase() == "euricka ashley" || person.toLowerCase() == "euricka ashley salita" || person == "euricka ashley matsuo" || person == "euricka ashley matsuo salita")) {
+            alert("Welcome Baby kooooo! Happy anniversary!!!!");
+            $('body').css('display', 'block')
+        }else {
+            alert('Sorry, this page is only for Euricka Ashley Matsuo Salita. Bye!');
+        }
+
+        var message = ["AH MAKANYAN?!!","TSE!","EMU KU PAKISABYAN!!!"];
+
+        $('.ayoko').click(function() {
+            var a = Math.floor(Math.random() * message.length);
+            alert(message[a]);
+        })
+
+        $('.kiss').click(function() {
+            let width = '150px';
+            let top = Math.floor(Math.random() * $('.kiss-me').height());
+            let left = Math.floor(Math.random() * $('.kiss-me').width());
+            let kiss = `<img class="kiss-img position-absolute" style="width: ${width}; top: ${top}px; left: ${left}px" src="kiss.png">`;
+            $('.modal-body').append(kiss)
+            $('.kiss-img').delay(100).fadeOut();
+        })
+
+        $(function () {
+            // <![CDATA[
+            var speed = 100; // speed colours change, 1 second = 1000
+            var glow = 3; // can be set from '0' for no glow, to 10
+            var raincol = new Array("#ff0000", "#ff5500", "#ffaa00", "#ffff00", "#aaff00", "#55ff00", "#00ff00",
+                "#00ff55", "#00ffaa", "#00ffff", "#00aaff", "#0055ff", "#0000ff", "#5500ff", "#aa00ff",
+                "#ff00ff", "#ff00aa", "#ff0055"); // change the colours if you want to
+            var alink = ""; // page to link text to (set to ="" for no link)
+
+            /****************************
+             *    Rainbow Text Effect    *
+             *(c)2003-13 mf2fm web-design*
+             *  http://www.mf2fm.com/rv  *
+             * DON'T EDIT BELOW THIS BOX *
+             ****************************/
+            var rainbow, raintxt, raincnt = 0;
+
+            function addLoadEvent(funky) {
+                var oldonload = window.onload;
+                if (typeof (oldonload) != 'function') window.onload = funky;
+                else window.onload = function () {
+                    if (oldonload) oldonload();
+                    funky();
+                }
+            }
+
+            addLoadEvent(regenbogen);
+
+            function regenbogen() {
+                if (document.getElementById) {
+                    var i, rainbeau;
+                    rainbow = document.getElementById("rainbow");
+                    raintxt = rainbow.firstChild.nodeValue;
+                    while (rainbow.childNodes.length) rainbow.removeChild(rainbow.childNodes[0]);
+                    for (i = 0; i < raintxt.length; i++) {
+                        rainbeau = document.createElement("span");
+                        rainbeau.setAttribute("id", "rain" + i);
+                        rainbeau.appendChild(document.createTextNode(raintxt.charAt(i)));
+                        if (alink) {
+                            rainbeau.style.cursor = "pointer";
+                            rainbeau.onclick = function () {
+                                top.location.href = alink;
+                            }
+                        }
+                        rainbow.appendChild(rainbeau);
+                    }
+                    rainbow = setInterval(raining, speed);
+                }
+            }
+
+            function raining() {
+                var i, c;
+                for (i = 0; i < raintxt.length; i++) {
+                    c = raincol[(i + raincnt) % raincol.length];
+                    document.getElementById("rain" + i).style.color = c;
+                    if (glow) document.getElementById("rain" + i).style.textShadow = c + " 0px 0px " + glow +
+                        "px";
+                }
+                raincnt++;
+            }
+            // ]]>
+        })
+
+        // $(function () {
+        //     // <![CDATA[
+        //     var bgcolour = "#ffffff"; // background colour
+        //     var fgcolour = "#b81922"; // foreground colour
+        //     var speed = 80; // speed of bubbling, lower is faster
+        //     var shades = 12; // number of shades of bubble
+
+        //     /****************************
+        //      *    Bubbling Text Effect   *
+        //      *(c)2003-13 mf2fm web-design*
+        //      *  http://www.mf2fm.com/rv  *
+        //      * DON'T EDIT BELOW THIS BOX *
+        //      ****************************/
+        //     var bubbcol = new Array();
+        //     var bubbshd;
+        //     var bubbler, bubbtxt;
+        //     var bubbchr = new Array();
+
+        //     function addLoadEvent(funky) {
+        //         var oldonload = window.onload;
+        //         if (typeof (oldonload) != 'function') window.onload = funky;
+        //         else window.onload = function () {
+        //             if (oldonload) oldonload();
+        //             funky();
+        //         }
+        //     }
+
+        //     addLoadEvent(bubbagump);
+
+        //     function bubbagump() {
+        //         if (document.getElementById) {
+        //             var i, fg, bg, col;
+        //             for (bubbler = 0; bubbler <= shades; bubbler++) {
+        //                 col = "#";
+        //                 for (i = 1; i < 6; i += 2) {
+        //                     bg = parseInt(bgcolour.substring(i, i + 2), 16);
+        //                     fg = parseInt(fgcolour.substring(i, i + 2), 16);
+        //                     col += dechex(bg + (fg - bg) * (bubbler / shades));
+        //                 }
+        //                 bubbcol[bubbler + 1] = col;
+        //                 if (bubbler == Math.floor(shades / 2)) bubbshd = col;
+        //             }
+        //             bubbler = document.getElementById("bubble");
+        //             bubbtxt = bubbler.firstChild.nodeValue;
+        //             while (bubbler.childNodes.length) bubbler.removeChild(bubbler.childNodes[0]);
+        //             for (i = 0; i < bubbtxt.length; i++) {
+        //                 fg = document.createElement("span");
+        //                 fg.setAttribute("id", "bubb" + i);
+        //                 fg.style.textShadow = bubbshd + " 0px 0px 2px";
+        //                 fg.appendChild(document.createTextNode(bubbtxt.charAt(i)));
+        //                 bubbler.appendChild(fg);
+        //             }
+        //             bubbler = setInterval(bubbling, speed);
+        //         }
+        //     }
+
+        //     function dechex(dec) {
+        //         dec = Math.floor(dec);
+        //         return ((dec < 16) ? '0' : '') + dec.toString(16);
+        //     }
+
+        //     function bubbling() {
+        //         var i, bubby;
+        //         for (i = 0; i < bubbtxt.length; i++) {
+        //             bubby = document.getElementById("bubb" + i);
+        //             if (bubbchr[i]) {
+        //                 bubby.style.color = bubbcol[bubbchr[i]];
+        //                 bubbchr[i] = (bubbchr[i] + 1) % bubbcol.length;
+        //             } else if (Math.random() < 7.5 / (shades * bubbtxt.length)) bubbchr[i] = 1;
+        //         }
+        //     }
+        //     // ]]>
+        // })
+
+        $(function () {
+            // <![CDATA[
+            var speed = 40; // lower number for faster
+            var leaves = 20; // number of leaves falling at a time
+            var untidy = 4; // how often do you want the leaves tidied up (high number is less often)
+
+            /****************************\
+            *Falling Autumn Leaves Effect*
+            *  (c)2013 mf2fm web-design  *
+            *  http://www.mf2fm.com/rv   *
+            * DO NOT EDIT BELOW THIS BOX *
+            \****************************/
+
+            var boddie;
+            var dx = new Array();
+            var xp = new Array();
+            var yp = new Array();
+            var am = new Array();
+            var dy = new Array();
+            var le = new Array();
+            var swide = 480;
+            var shigh = 320;
+            var sleft = 0;
+            var starty = 0;
+            var offset = 0;
+            var tidying = 0;
+            var deeex = 0;
+            var has_focus = true;
+            var ie_version = (navigator.appVersion.indexOf("MSIE") != -1) ? parseFloat(navigator.appVersion
+                .split("MSIE")[1]) : false;
+            var plow = document.createElement("img");
+            plow.src = '';
+            var leafy = new Array();
+            var leaf_image = new Array();
+            leaf_image[0] = '1.png';
+            leaf_image[1] = '2.png';
+            leaf_image[2] = '3.png';
+            leaf_image[3] = '4.png';
+
+            function addLoadEvent(funky) {
+                var oldonload = window.onload;
+                if (typeof (oldonload) != 'function') window.onload = funky;
+                else window.onload = function () {
+                    if (oldonload) oldonload();
+                    funky();
+                }
+            }
+
+            addLoadEvent(september_21);
+
+            function september_21() {
+                if (document.getElementById) {
+                    var i;
+                    if (ie_version) {
+                        document.onfocusin = function () {
+                            has_focus = true;
+                        };
+                        document.onfocusout = function () {
+                            has_focus = false;
+                        };
+                    } else {
+                        window.onfocus = function () {
+                            has_focus = true;
+                        };
+                        window.onblur = function () {
+                            has_focus = false;
+                        };
+                    }
+                    window.onscroll = set_scroll;
+                    window.onresize = set_width;
+                    document.onmousemove = mouse;
+                    boddie = document.createElement("div");
+                    boddie.style.position = "fixed";
+                    boddie.style.bottom = "0px";
+                    boddie.style.left = "0px";
+                    boddie.style.width = "100%";
+                    boddie.style.overflow = "visible";
+                    boddie.style.backgroundColor = "transparent";
+                    boddie.style.pointerEvents = "none";
+                    boddie.style.zIndex = "0";
+                    document.body.insertBefore(boddie, document.body.firstChild);
+                    set_width();
+                    plow.style.position = "absolute";
+                    plow.style.overflow = "hidden";
+                    plow.style.zIndex = 9999;
+                    plow.style.bottom = "0px";
+                    plow.style.left = "-144px";
+                    boddie.appendChild(plow);
+                    for (i = 0; i < leaves; i++) start_leaf(Math.random() * shigh * 3 / 4);
+                    offset = 0;
+                    setInterval(autumn_leaves, speed);
+                }
+            }
+
+            function start_leaf(whyp) {
+                starty++;
+                offset++;
+                var f, size;
+                size = start_fall(starty, whyp);
+                f = document.createElement("img");
+                f.src = leaf_image[starty % leaf_image.length];
+                f.width = size;
+                f.style.height = "auto";
+                f.style.position = "absolute";
+                f.style.zIndex = 1000 + starty;
+                f.style.top = yp[starty] + "px";
+                f.style.left = xp[starty] + "px";
+                leafy[starty] = f;
+                boddie.appendChild(f);
+            }
+
+            function start_fall(i, whyp) {
+                var size = 72 - Math.floor(36 * Math.random());
+                dx[i] = Math.random();
+                am[i] = 8 + Math.random() * 24;
+                dy[i] = 1 + Math.random() * 2;
+                xp[i] = Math.random() * (swide - size);
+                yp[i] = whyp - size;
+                le[i] = 'falling';
+                return size;
+            }
+
+            function set_width() {
+                var sw, sh;
+                if (typeof (window.innerWidth) == 'number' && window.innerWidth) {
+                    sw = window.innerWidth;
+                    sh = window.innerHeight;
+                } else if (document.compatMode == "CSS1Compat" && document.documentElement && document
+                    .documentElement.clientWidth) {
+                    sw = document.documentElement.clientWidth;
+                    sh = document.documentElement.clientHeight;
+                } else {
+                    sw = document.body.clientWidth;
+                    sh = document.body.clientHeight;
+                }
+                if (sw && sh && has_focus) {
+                    swide = sw;
+                    shigh = sh;
+                }
+                boddie.style.height = shigh + "px";
+            }
+
+            function autumn_leaves() {
+                var i;
+                var c = 0;
+                for (i = 0; i < starty; i++) {
+                    if (leafy[i] && le[i] != 'tidying') {
+                        if (yp[i] > shigh || xp[i] > swide || xp[i] < -leafy[i].width) {
+                            if (offset > 0) offset--;
+                            boddie.removeChild(leafy[i]);
+                            leafy[i] = false;
+                        } else if (yp[i] + untidy * offset / leaves < shigh - leafy[i].height / 2) {
+                            yp[i] += dy[i];
+                            dx[i] += 0.025 + Math.random() / 10;
+                            xp[i] += deeex;
+                            leafy[i].style.top = (yp[i] - am[i] / 2 * Math.abs(Math.sin(dx[i]))) + "px";
+                            leafy[i].style.left = (xp[i] + am[i] * Math.sin(dx[i])) + "px";
+                        } else if (le[i] == 'falling') le[i] = 'landed';
+                    }
+                    if (leafy[i] && le[i] == 'falling') c++;
+                }
+                if (c < leaves) start_leaf(0);
+                if (offset > untidy * leaves && !tidying && Math.random() < .05) tidy_leaves();
+            }
+
+            function tidy_leaves() {
+                var i;
+                tidying = true;
+                for (i = swide; i >= -146; i -= 2) setTimeout(plough(' + i + '), speed * (swide - i));
+                setTimeout('tidying=false; offset=0;', speed * (swide - i));
+            }
+
+            function plough(x) {
+                var i, p;
+                plow.style.left = x + "px";
+                for (i = 0; i < starty; i++) {
+                    if (leafy[i] && le[i] != 'falling') {
+                        p = xp[i] + leafy[i].width + am[i] * Math.sin(dx[i]) - dy[i];
+                        if (p < 0) {
+                            boddie.removeChild(leafy[i]);
+                            leafy[i] = false;
+                        } else if (p > x && p < x + 3) {
+                            le[i] = 'tidying';
+                            xp[i] -= 2;
+                            leafy[i].style.left = (xp[i] + am[i] * Math.sin(dx[i])) + "px";
+                            if (Math.random() < .1) {
+                                yp[i] -= 1;
+                                leafy[i].style.top = (yp[i] - am[i] / 2 * Math.abs(Math.sin(dx[i]))) + "px";
+                            }
+                        } else if (p > x + 144 && yp[i] < shigh - leafy[i].height / 2) {
+                            yp[i] += dy[i];
+                            dx[i] += 0.02 + Math.random() / 10;
+                            leafy[i].style.top = (yp[i] - am[i] / 2 * Math.abs(Math.sin(dx[i]))) + "px";
+                            leafy[i].style.left = (xp[i] + am[i] * Math.sin(dx[i])) + "px";
+                        }
+                    }
+                }
+            }
+
+            function set_scroll() {
+                if (typeof (self.pageXOffset) == 'number' && self.pageXoffset) sleft = self.pageXOffset;
+                else if (document.body && document.body.scrollLeft) sleft = document.body.scrollLeft;
+                else if (document.documentElement && document.documentElement.scrollLeft) sleft = document
+                    .documentElement.scrollLeft;
+                else sleft = 0;
+            }
+
+            function mouse(e) {
+                var x;
+                if (e) x = e.pageX;
+                else {
+                    x = event.x;
+                    set_scroll();
+                    x += sleft;
+                }
+                deeex = has_focus ? Math.floor(-1.5 + 4 * (x - sleft) / swide) : 0;
+            }
+            // ]]>
+        })
+
+        // $(function () {
+        //     // <![CDATA[
+        //     var border = 100; // how wide is each border in pixels
+        //     var effects = 3; // how many of the effect are on the page
+        //     var speed = 50; // how fast is the animation (lower is faster)
+        //     var colours = new Array("#9cf", "#c9f", "#fc9", "#f9c", "#cf9", "#9fc", "#6ff", "#f6f", "#ff6");
+        //     // above line lists colours for the groovy effect (the list can be as long or short as you like)
+
+        //     /****************************
+        //      *1970s Groovy WebPage Effect*
+        //      *(c)2008-13 mf2fm web-design*
+        //      *  http://www.mf2fm.com/rv  *
+        //      * DON'T EDIT BELOW THIS BOX *
+        //      ****************************/
+
+        //     function addLoadEvent(funky) {
+        //         var oldonload = window.onload;
+        //         if (typeof (oldonload) != 'function') window.onload = funky;
+        //         else window.onload = function () {
+        //             if (oldonload) oldonload();
+        //             funky();
+        //         }
+        //     }
+
+        //     addLoadEvent(yowzah);
+
+        //     var swide, shigh, boddie;
+        //     var h = new Array();
+        //     var v = new Array();
+        //     var op = 1 / (effects + 1);
+
+        //     function yowzah() {
+        //         if (document.getElementById) {
+        //             var i, d, s;
+        //             boddie = document.createElement("div");
+        //             s = boddie.style;
+        //             s.position = "fixed";
+        //             s.backgroundColor = "transparent";
+        //             s.top = "0px";
+        //             s.left = "0px";
+        //             s.width = "100%";
+        //             s.zIndex = "0";
+        //             set_width();
+        //             i = document.body.style.backgroundColor;
+        //             if (document.body.parentNode) {
+        //                 if (i) document.body.parentNode.style.backgroundColor = i;
+        //                 document.body.style.backgroundColor = "transparent";
+        //             }
+        //             document.body.insertBefore(boddie, document.body.firstChild);
+        //             for (i = 0; i < effects * 10; i += 10) {
+        //                 d = document.createElement("div");
+        //                 s = d.style;
+        //                 s.left = "0px";
+        //                 s.width = "100%";
+        //                 h[i] = Math.floor(Math.random() * (shigh - border) / 3);
+        //                 h[i + 1] = shigh - Math.floor(Math.random() * (shigh - border) / 3);
+        //                 h[i + 2] = (Math.random() < 0.5 ? 1 : -1) * scat(0);
+        //                 h[i + 3] = (Math.random() < 0.5 ? 1 : -1) * scat(h[i + 2]);
+        //                 s.position = "absolute";
+        //                 s.top = h[i] + "px";
+        //                 s.height = (h[i + 1] - h[1]) + "px";
+        //                 s.borderStyle = "solid";
+        //                 s.borderWidth = border + "px 0px";
+        //                 jazzy(s, 'borderTopColor');
+        //                 jazzy(s, 'borderBottomColor');
+        //                 jazzy(s, 'backgroundColor');
+        //                 s.opacity = op;
+        //                 if (navigator.appName == "Microsoft Internet Explorer") s.filter = "alpha(opacity=" + (
+        //                     100 * op) + ")";
+        //                 h[i + 5] = s;
+        //                 boddie.appendChild(d);
+        //             }
+        //             for (i = 0; i < effects * 10; i += 10) {
+        //                 d = document.createElement("div");
+        //                 s = d.style;
+        //                 s.top = "0px";
+        //                 s.height = "100%";
+        //                 v[i] = Math.floor(Math.random() * (swide - border) / 3);
+        //                 v[i + 1] = swide - Math.floor(Math.random() * (swide - border) / 3);
+        //                 v[i + 2] = (Math.random() < 0.5 ? 1 : -1) * scat(0);
+        //                 v[i + 3] = (Math.random() < 0.5 ? 1 : -1) * scat(v[i + 2]);
+        //                 s.position = "absolute";
+        //                 s.left = v[i] + "px";
+        //                 s.width = (v[i + 1] - v[i]) + "px";
+        //                 s.borderStyle = "solid";
+        //                 s.borderWidth = "0px " + border + "px";
+        //                 jazzy(s, 'borderLeftColor');
+        //                 jazzy(s, 'borderRightColor');
+        //                 jazzy(s, 'backgroundColor');
+        //                 if (navigator.appName == "Microsoft Internet Explorer") s.filter = "alpha(opacity=" + (
+        //                     100 * op) + ")";
+        //                 else s.opacity = op;
+        //                 v[i + 5] = s;
+        //                 boddie.appendChild(d);
+        //             }
+        //             setInterval(groovy, speed);
+        //         }
+        //     }
+
+        //     var old_jazz = false;
+
+        //     function jazz() {
+        //         var new_jazz;
+        //         do {
+        //             new_jazz = colours[Math.floor(Math.random() * colours.length)];
+        //         }
+        //         while (new_jazz == old_jazz);
+        //         old_jazz = new_jazz;
+        //         return (new_jazz);
+        //     }
+
+        //     function jazzy(hip, jive) {
+        //         var new_jive;
+        //         do {
+        //             new_jive = colours[Math.floor(Math.random() * colours.length)];
+        //         }
+        //         while (new_jive == hip[jive]);
+        //         hip[jive] = new_jive;
+        //     }
+
+        //     function scat(no) {
+        //         var yes;
+        //         no = Math.abs(no);
+        //         do {
+        //             yes = 2 + Math.floor(Math.random() * 3);
+        //         }
+        //         while (no == yes);
+        //         return (yes);
+        //     }
+
+        //     function groovy() {
+        //         var i;
+        //         for (i = 0; i < effects * 10; i += 10) {
+        //             h[i] += h[i + 2];
+        //             h[i + 1] += h[i + 3];
+        //             if (h[i + 1] - h[i] < 5) {
+        //                 h[i + 4] = h[i + 2];
+        //                 h[i + 2] = h[i + 3];
+        //                 h[i + 3] = h[i + 4];
+        //                 jazzy(h[i + 5], 'backgroundColor');
+        //             }
+        //             if (h[i] < -border) {
+        //                 if (h[i + 2] < 0 && Math.random() < 1 / border) {
+        //                     h[i + 2] = scat(h[i + 3]);
+        //                     jazzy(h[i + 5], 'borderTopColor');
+        //                 }
+        //             }
+        //             if (h[i + 1] > shigh) {
+        //                 if (h[i + 3] > 0 && Math.random() < 1 / border) {
+        //                     h[i + 3] = -scat(h[i + 2]);
+        //                     jazzy(h[i + 5], 'borderBottomColor');
+        //                 }
+        //             }
+        //             h[i + 5].top = h[i] + "px";
+        //             h[i + 5].height = (h[i + 1] - h[i]) + "px";
+
+        //             v[i] += v[i + 2];
+        //             v[i + 1] += v[i + 3];
+        //             if (v[i + 1] - v[i] < 5) {
+        //                 v[i + 4] = v[i + 2];
+        //                 v[i + 2] = v[i + 3];
+        //                 v[i + 3] = v[i + 4];
+        //                 jazzy(v[i + 5], 'backgroundColor');
+        //             }
+        //             if (v[i] < -border) {
+        //                 if (v[i + 2] < 0 && Math.random() < 1 / border) {
+        //                     v[i + 2] = scat(v[i + 3]);
+        //                     jazzy(v[i + 5], 'borderLeftColor');
+        //                 }
+        //             }
+        //             if (v[i + 1] > swide) {
+        //                 if (v[i + 3] > 0 && Math.random() < 1 / border) {
+        //                     v[i + 3] = -scat(v[i + 2]);
+        //                     jazzy(v[i + 5], 'borderRightColor');
+        //                 }
+        //             }
+        //             v[i + 5].left = v[i] + "px";
+        //             v[i + 5].width = (v[i + 1] - v[i]) + "px";
+        //         }
+        //     }
+
+        //     window.onresize = set_width;
+
+        //     function set_width() {
+        //         var sw_min = 999999;
+        //         var sh_min = 999999;
+        //         if (document.documentElement && document.documentElement.clientWidth) {
+        //             if (document.documentElement.clientWidth > 0) sw_min = document.documentElement.clientWidth;
+        //             if (document.documentElement.clientHeight > 0) sh_min = document.documentElement
+        //                 .clientHeight;
+        //         }
+        //         if (typeof (self.innerWidth) != "undefined" && self.innerWidth) {
+        //             if (self.innerWidth > 0 && self.innerWidth < sw_min) sw_min = self.innerWidth;
+        //             if (self.innerHeight > 0 && self.innerHeight < sh_min) sh_min = self.innerHeight;
+        //         }
+        //         if (document.body.clientWidth) {
+        //             if (document.body.clientWidth > 0 && document.body.clientWidth < sw_min) sw_min = document
+        //                 .body.clientWidth;
+        //             if (document.body.clientHeight > 0 && document.body.clientHeight < sh_min) sh_min = document
+        //                 .body.clientHeight;
+        //         }
+        //         if (sw_min == 999999 || sh_min == 999999) {
+        //             sw_min = 800;
+        //             sh_min = 600;
+        //         }
+        //         swide = sw_min;
+        //         shigh = sh_min;
+        //         boddie.style.height = shigh + "px";
+        //     }
+        //     // ]]>
+        // })
+
+        // <![CDATA[
+        var bits = 80; // how many bits
+        var speed = 33; // how fast - smaller is faster
+        var bangs = 5; // how many can be launched simultaneously (note that using too many can slow the script down)
+        var colours = new Array("#03f", "#f03", "#0e0", "#93f", "#0cf", "#f93", "#f0c");
+        //                     blue    red     green   purple  cyan    orange  pink
+
+        /****************************
+         *      Fireworks Effect     *
+         *(c)2004-14 mf2fm web-design*
+         *  http://www.mf2fm.com/rv  *
+         * DON'T EDIT BELOW THIS BOX *
+         ****************************/
+        var bangheight = new Array();
+        var intensity = new Array();
+        var colour = new Array();
+        var Xpos = new Array();
+        var Ypos = new Array();
+        var dX = new Array();
+        var dY = new Array();
+        var stars = new Array();
+        var decay = new Array();
+        var swide = 800;
+        var shigh = 600;
+        var boddie;
+
+        if (typeof ('addRVLoadEvent') != 'function')
+
+        function addRVLoadEvent(funky) {
+            var oldonload = window.onload;
+            if (typeof (oldonload) != 'function') window.onload = funky;
+            else window.onload = function () {
+                if (oldonload) oldonload();
+                funky();
+            }
+        }
+
+        addRVLoadEvent(light_blue_touchpaper);
+
+        function light_blue_touchpaper() {
+            if (document.getElementById) {
+                var i;
+                boddie = document.createElement("div");
+                boddie.style.position = "fixed";
+                boddie.style.top = "0px";
+                boddie.style.left = "0px";
+                boddie.style.overflow = "visible";
+                boddie.style.width = "1px";
+                boddie.style.height = "1px";
+                boddie.style.backgroundColor = "transparent";
+                document.body.appendChild(boddie);
+                set_width();
+                for (i = 0; i < bangs; i++) {
+                    write_fire(i);
+                    launch(i);
+                    setInterval('stepthrough(' + i + ')', speed);
+                }
+            }
+        }
+
+        function write_fire(N) {
+            var i, rlef, rdow;
+            stars[N + 'r'] = createDiv('|', 12);
+            boddie.appendChild(stars[N + 'r']);
+            for (i = bits * N; i < bits + bits * N; i++) {
+                stars[i] = createDiv('*', 13);
+                boddie.appendChild(stars[i]);
+            }
+        }
+
+        function createDiv(char, size) {
+            var div = document.createElement("div");
+            div.style.font = size + "px monospace";
+            div.style.position = "absolute";
+            div.style.backgroundColor = "transparent";
+            div.appendChild(document.createTextNode(char));
+            return (div);
+        }
+
+        function launch(N) {
+            colour[N] = Math.floor(Math.random() * colours.length);
+            Xpos[N + "r"] = swide * 0.5;
+            Ypos[N + "r"] = shigh - 5;
+            bangheight[N] = Math.round((0.5 + Math.random()) * shigh * 0.4);
+            dX[N + "r"] = (Math.random() - 0.5) * swide / bangheight[N];
+            if (dX[N + "r"] > 1.25) stars[N + "r"].firstChild.nodeValue = "/";
+            else if (dX[N + "r"] < -1.25) stars[N + "r"].firstChild.nodeValue = "\\";
+            else stars[N + "r"].firstChild.nodeValue = "|";
+            stars[N + "r"].style.color = colours[colour[N]];
+        }
+
+        function bang(N) {
+            var i, Z, A = 0;
+            for (i = bits * N; i < bits + bits * N; i++) {
+                Z = stars[i].style;
+                Z.left = Xpos[i] + "px";
+                Z.top = Ypos[i] + "px";
+                if (decay[i]) decay[i]--;
+                else A++;
+                if (decay[i] == 15) Z.fontSize = "7px";
+                else if (decay[i] == 7) Z.fontSize = "2px";
+                else if (decay[i] == 1) Z.visibility = "hidden";
+                if (decay[i] > 1 && Math.random() < .1) {
+                    Z.visibility = "hidden";
+                    setTimeout('stars[' + i + '].style.visibility="visible"', speed - 1);
+                }
+                Xpos[i] += dX[i];
+                Ypos[i] += (dY[i] += 1.25 / intensity[N]);
+
+            }
+            if (A != bits) setTimeout("bang(" + N + ")", speed);
+        }
+
+        function stepthrough(N) {
+            var i, M, Z;
+            var oldx = Xpos[N + "r"];
+            var oldy = Ypos[N + "r"];
+            Xpos[N + "r"] += dX[N + "r"];
+            Ypos[N + "r"] -= 4;
+            if (Ypos[N + "r"] < bangheight[N]) {
+                M = Math.floor(Math.random() * 3 * colours.length);
+                intensity[N] = 5 + Math.random() * 4;
+                for (i = N * bits; i < bits + bits * N; i++) {
+                    Xpos[i] = Xpos[N + "r"];
+                    Ypos[i] = Ypos[N + "r"];
+                    dY[i] = (Math.random() - 0.5) * intensity[N];
+                    dX[i] = (Math.random() - 0.5) * (intensity[N] - Math.abs(dY[i])) * 1.25;
+                    decay[i] = 16 + Math.floor(Math.random() * 16);
+                    Z = stars[i];
+                    if (M < colours.length) Z.style.color = colours[i % 2 ? colour[N] : M];
+                    else if (M < 2 * colours.length) Z.style.color = colours[colour[N]];
+                    else Z.style.color = colours[i % colours.length];
+                    Z.style.fontSize = "13px";
+                    Z.style.visibility = "visible";
+                }
+                bang(N);
+                launch(N);
+            }
+            stars[N + "r"].style.left = oldx + "px";
+            stars[N + "r"].style.top = oldy + "px";
+        }
+
+        window.onresize = set_width;
+
+        function set_width() {
+            var sw_min = 999999;
+            var sh_min = 999999;
+            if (document.documentElement && document.documentElement.clientWidth) {
+                if (document.documentElement.clientWidth > 0) sw_min = document.documentElement.clientWidth;
+                if (document.documentElement.clientHeight > 0) sh_min = document.documentElement.clientHeight;
+            }
+            if (typeof (self.innerWidth) != "undefined" && self.innerWidth) {
+                if (self.innerWidth > 0 && self.innerWidth < sw_min) sw_min = self.innerWidth;
+                if (self.innerHeight > 0 && self.innerHeight < sh_min) sh_min = self.innerHeight;
+            }
+            if (document.body.clientWidth) {
+                if (document.body.clientWidth > 0 && document.body.clientWidth < sw_min) sw_min = document.body
+                    .clientWidth;
+                if (document.body.clientHeight > 0 && document.body.clientHeight < sh_min) sh_min = document.body
+                    .clientHeight;
+            }
+            if (sw_min == 999999 || sh_min == 999999) {
+                sw_min = 800;
+                sh_min = 600;
+            }
+            swide = sw_min;
+            shigh = sh_min;
+        }
+        // ]]>
+    </script>
+</body>
+
+</html>
