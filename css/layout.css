@@ -1468,3 +1468,7 @@ fieldset[disabled] .btn-theme {
 .two-column {
   column-count: 2
 }
+.icon-social-upwork{
+  width: 24px;
+  margin: -2px -2px;
+}
