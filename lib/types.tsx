@@ -3,6 +3,7 @@ import { projectCategories, projectModalTabs } from "./data";
 export type Technology =
   | "laravel"
   | "php"
+  | "vue"
   | "node"
   | "express"
   | "livewire"

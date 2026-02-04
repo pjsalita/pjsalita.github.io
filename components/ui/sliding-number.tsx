@@ -3,7 +3,7 @@ import { MotionValue, motion, motionValue, useSpring, useTransform } from 'motio
 import { useEffect, useId } from 'react';
 import useMeasure from 'react-use-measure';
 
-const TRANSITION = {
+const TRANSITION: any = { // eslint-disable-line @typescript-eslint/no-explicit-any
   type: 'spring',
   stiffness: 280,
   damping: 18,
