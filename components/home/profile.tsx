@@ -89,9 +89,9 @@ const Profile = () => {
               </TextShimmer>
               <motion.span
                 className="inline-block text-5xl"
+                style={{ transformOrigin: "100% 100%" }}
                 animate={{
                   rotate: [0, 20, 0, 20, 0],
-                  transformOrigin: "bottom right",
                 }}
                 transition={{
                   duration: 1,
