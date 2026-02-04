@@ -2,7 +2,6 @@
 
 import { AnimatedBackground } from "@/components/ui/animated-background";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
-import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselIndicator, CarouselItem, CarouselNavigation } from "@/components/ui/carousel";
@@ -20,14 +19,14 @@ import { Safari } from "@/components/ui/safari";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { ScrollableImage } from "@/components/ui/scrollable-image";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { TextShimmer } from "@/components/ui/text-shimmer";
 import { projectCategories, projectModalTabs, projects } from "@/lib/data";
 import { Project, ProjectCategory } from "@/lib/types";
-import { getTechColor } from "@/lib/utils";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import { useState } from "react";
+import { Section } from "../section";
+import { TechBadge } from "../tech-badge";
 
 const Projects = () => {
   const [activeCategory, setActiveCategory] = useState<ProjectCategory>("all");
@@ -35,11 +34,7 @@ const Projects = () => {
   const handleTabChange = (value: string) => value && setActiveCategory(value as ProjectCategory);
 
   return (
-    <section className="border-border/50 bg-background/80 border-l px-8 py-20 backdrop-blur-sm">
-      <TextShimmer as="h2" className="mb-12 text-3xl font-bold [--base-color:var(--primary)] [--base-gradient-color:var(--accent)]">
-        Project Showcase
-      </TextShimmer>
-
+    <Section title="Project Showcase">
       <Tabs className="mb-8">
         <TabsList>
           <AnimatedBackground
@@ -88,7 +83,7 @@ const Projects = () => {
           </motion.div>
         ))}
       </div>
-    </section>
+    </Section>
   );
 };
 
@@ -136,14 +131,9 @@ const ProjectCard = ({ project }: { project: Project }) => {
           <MorphingDialogSubtitle className="text-muted-foreground mb-4 line-clamp-2">{project.description}</MorphingDialogSubtitle>
 
           <div className="mb-4 flex flex-wrap gap-2">
-            {project.technologies.map((tech) => {
-              const { bg, text } = getTechColor(tech);
-              return (
-                <Badge key={tech} variant="secondary" className={`${bg} ${text} font-medium transition-colors`}>
-                  {tech.charAt(0).toUpperCase() + tech.slice(1)}
-                </Badge>
-              );
-            })}
+            {project.technologies.map((tech) => (
+              <TechBadge key={tech} technology={tech} />
+            ))}
           </div>
 
           {(project.link || project.githubLink) && (
@@ -195,14 +185,9 @@ const ProjectModal = ({ project }: { project: Project }) => {
 
             {project.technologies && (
               <div className="flex flex-wrap gap-2 py-4">
-                {project.technologies.map((tech) => {
-                  const { bg, text } = getTechColor(tech);
-                  return (
-                    <Badge key={tech} variant="secondary" className={`${bg} ${text} font-medium transition-colors`}>
-                      {tech.charAt(0).toUpperCase() + tech.slice(1)}
-                    </Badge>
-                  );
-                })}
+                {project.technologies.map((tech) => (
+                  <TechBadge key={tech} technology={tech} />
+                ))}
               </div>
             )}
           </div>

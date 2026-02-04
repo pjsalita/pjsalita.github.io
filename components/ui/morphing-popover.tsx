@@ -54,7 +54,7 @@ function usePopoverLogic({
 
 export type MorphingPopoverProps = {
   children: React.ReactNode;
-  transition?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
+  transition?: any;
   defaultOpen?: boolean;
   open?: boolean;
   onOpenChange?: (open: boolean) => void;

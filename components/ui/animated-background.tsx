@@ -26,7 +26,9 @@ export function AnimatedBackground({ children, defaultValue, onValueChange, clas
 
   useEffect(() => {
     if (defaultValue !== undefined) {
-      setActiveId(defaultValue);
+      setTimeout(() => {
+        setActiveId(defaultValue);
+      }, 0);
     }
   }, [defaultValue]);
 

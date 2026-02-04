@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { cn } from '@/lib/utils';
-import { motion } from 'motion/react';
-import React, { useEffect, useId, useRef, useState } from 'react';
+import { cn } from "@/lib/utils";
+import { motion } from "motion/react";
+import React, { useEffect, useId, useRef, useState } from "react";
 
 /**
  *  DotPattern Component Props
@@ -64,6 +64,8 @@ export function DotPattern({ width = 16, height = 16, cx = 1, cy = 1, cr = 1, cl
   const id = useId();
   const containerRef = useRef<SVGSVGElement>(null);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const [delay] = useState(() => Math.random() * 5);
+  const [duration] = useState(() => Math.random() * 3 + 2);
 
   useEffect(() => {
     const updateDimensions = () => {
@@ -74,8 +76,8 @@ export function DotPattern({ width = 16, height = 16, cx = 1, cy = 1, cr = 1, cl
     };
 
     updateDimensions();
-    window.addEventListener('resize', updateDimensions);
-    return () => window.removeEventListener('resize', updateDimensions);
+    window.addEventListener("resize", updateDimensions);
+    return () => window.removeEventListener("resize", updateDimensions);
   }, []);
 
   const dots = Array.from(
@@ -88,14 +90,14 @@ export function DotPattern({ width = 16, height = 16, cx = 1, cy = 1, cr = 1, cl
       return {
         x: col * width + cx,
         y: row * height + cy,
-        delay: Math.random() * 5,
-        duration: Math.random() * 3 + 2,
+        delay,
+        duration,
       };
     },
   );
 
   return (
-    <svg ref={containerRef} aria-hidden="true" className={cn('pointer-events-none absolute inset-0 h-full w-full', className)} {...props}>
+    <svg ref={containerRef} aria-hidden="true" className={cn("pointer-events-none absolute inset-0 h-full w-full", className)} {...props}>
       <defs>
         <radialGradient id={`${id}-gradient`}>
           <stop offset="0%" stopColor="currentColor" stopOpacity="1" />
@@ -108,7 +110,7 @@ export function DotPattern({ width = 16, height = 16, cx = 1, cy = 1, cr = 1, cl
           cx={dot.x}
           cy={dot.y}
           r={cr}
-          fill={glow ? `url(#${id}-gradient)` : 'currentColor'}
+          fill={glow ? `url(#${id}-gradient)` : "currentColor"}
           className="text-neutral-400/80"
           initial={glow ? { opacity: 0.4, scale: 1 } : {}}
           animate={
@@ -124,9 +126,9 @@ export function DotPattern({ width = 16, height = 16, cx = 1, cy = 1, cr = 1, cl
               ? {
                   duration: dot.duration,
                   repeat: Infinity,
-                  repeatType: 'reverse',
+                  repeatType: "reverse",
                   delay: dot.delay,
-                  ease: 'easeInOut',
+                  ease: "easeInOut",
                 }
               : {}
           }

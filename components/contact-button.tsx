@@ -11,7 +11,7 @@ import { VariantProps } from "class-variance-authority";
 import { XIcon } from "lucide-react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
-import { MorphingDialog, MorphingDialogClose, MorphingDialogContainer, MorphingDialogContent, MorphingDialogTrigger } from "./morphing-dialog";
+import { MorphingDialog, MorphingDialogClose, MorphingDialogContainer, MorphingDialogContent, MorphingDialogTrigger } from "./ui/morphing-dialog";
 
 interface ContactButtonProps extends React.ComponentProps<"button">, VariantProps<typeof buttonVariants> {}
 
@@ -65,7 +65,7 @@ export function ContactButton({ children, variant, ...props }: ContactButtonProp
             <Card className="w-full max-w-md px-2 py-10">
               <CardHeader>
                 <CardTitle>Contact me</CardTitle>
-                <CardDescription>Send me a message and I'll get back to you as soon as possible.</CardDescription>
+                <CardDescription>Send me a message and I&apos;ll get back to you as soon as possible.</CardDescription>
               </CardHeader>
 
               <CardContent>

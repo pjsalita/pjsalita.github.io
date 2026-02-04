@@ -2,9 +2,9 @@
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { buttonVariants } from "@/components/ui/button";
-import { ContactButton } from "@/components/ui/contact-button";
+import { ContactButton } from "@/components/contact-button";
 import { DotPattern } from "@/components/ui/dot-pattern";
-import { Meteors } from "@/components/ui/meteors";
+// import { Meteors } from "@/components/ui/meteors";
 import { SlidingNumber } from "@/components/ui/sliding-number";
 import { TextEffect } from "@/components/ui/text-effect";
 import { TextLoop } from "@/components/ui/text-loop";
@@ -14,6 +14,7 @@ import { titles } from "@/lib/data";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { MorphingDialog, MorphingDialogContainer, MorphingDialogContent, MorphingDialogTrigger } from "../ui/morphing-dialog";
+import Image from "next/image";
 
 const Profile = () => {
   const [phTime, setPhTime] = useState(new Date());
@@ -56,9 +57,9 @@ const Profile = () => {
     <>
       {/* <Meteors number={5} /> */}
 
-      <div className="relative w-full lg:w-1/2 lg:flex-shrink-0">
+      <div className="relative w-full lg:w-1/2 lg:shrink-0">
         <div className="relative flex min-h-[50vh] items-center justify-center px-8 py-20 lg:h-full lg:py-0">
-          <DotPattern className="[mask-image:radial-gradient(300px_circle_at_center,white,transparent)] lg:[mask-image:radial-gradient(400px_circle_at_center,white,transparent)]" />
+          <DotPattern className="mask-[radial-gradient(300px_circle_at_center,white,transparent)] lg:mask-[radial-gradient(400px_circle_at_center,white,transparent)]" />
           <Tilt rotationFactor={5} isRevese>
             <div className="relative z-10 text-center">
               <MorphingDialog
@@ -76,7 +77,7 @@ const Profile = () => {
                 </MorphingDialogTrigger>
                 <MorphingDialogContainer>
                   <MorphingDialogContent className="bg-background relative h-auto w-full max-w-3xl overflow-y-auto rounded-2xl p-4 shadow-lg md:p-6">
-                    <img src="/images/pj.png" alt="PJ Salita" className="rounded-full object-cover object-top" />
+                    <Image src="/images/pj.png" alt="PJ Salita" className="rounded-full object-cover object-top" width={100} height={100} />
                   </MorphingDialogContent>
                 </MorphingDialogContainer>
               </MorphingDialog>
