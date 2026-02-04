@@ -1,6 +1,5 @@
 import "./globals.css";
-import { AppDock } from "@/components/app-dock";
-import { Profile } from "@/components/home/profile";
+import { SyncScrollLayout } from "@/components/sync-scroll-layout";
 import { Metadata } from "next";
 import Script from "next/script";
 
@@ -35,14 +34,9 @@ export default function RootLayout({
           }}
         />
       </head>
+
       <body className="antialiased">
-        <div className="bg-background text-foreground relative min-h-screen w-full overflow-hidden lg:flex lg:h-screen">
-          <Profile />
-
-          <div className="w-full lg:h-screen lg:w-1/2 lg:overflow-y-auto">{children}</div>
-
-          <AppDock />
-        </div>
+        <SyncScrollLayout>{children}</SyncScrollLayout>
       </body>
     </html>
   );

@@ -34,7 +34,7 @@ const Projects = () => {
   const handleTabChange = (value: string) => value && setActiveCategory(value as ProjectCategory);
 
   return (
-    <Section title="Project Showcase">
+    <Section title="Projects">
       <Tabs className="mb-8">
         <TabsList>
           <AnimatedBackground
