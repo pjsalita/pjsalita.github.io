@@ -1,71 +1,58 @@
-'use client';
+"use client";
 
-import React from "react"
+import React from "react";
 
-import { useState } from 'react';
-import { Button, buttonVariants } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { cn } from '@/lib/utils';
-import { VariantProps } from 'class-variance-authority';
-import { XIcon } from 'lucide-react';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Label } from '@/components/ui/label';
-import {
-  MorphingDialog,
-  MorphingDialogClose,
-  MorphingDialogContainer,
-  MorphingDialogContent,
-  MorphingDialogTrigger,
-} from './morphing-dialog';
+import { useState } from "react";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { cn } from "@/lib/utils";
+import { VariantProps } from "class-variance-authority";
+import { XIcon } from "lucide-react";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
+import { MorphingDialog, MorphingDialogClose, MorphingDialogContainer, MorphingDialogContent, MorphingDialogTrigger } from "./morphing-dialog";
 
-interface ContactButtonProps extends React.ComponentProps<'button'>, VariantProps<typeof buttonVariants> {}
+interface ContactButtonProps extends React.ComponentProps<"button">, VariantProps<typeof buttonVariants> {}
 
 export function ContactButton({ children, variant, ...props }: ContactButtonProps) {
-  const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
-  const [data, setData] = useState({ email: '', subject: '', message: '' });
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [data, setData] = useState({ subject: "", message: "" });
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
-  const [processing, setProcessing] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const key = e.target.id;
     const value = e.target.value;
 
-    setErrors((prev) => ({ ...prev, [key]: '' }));
-    setStatus('idle');
+    setErrors((prev) => ({ ...prev, [key]: "" }));
+    setStatus("idle");
     setData((prev) => ({ ...prev, [key]: value }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus('idle');
+    setStatus("idle");
     setErrors({});
-    setProcessing(true);
 
     // Basic validation
-    if (!data.email || !data.subject || !data.message) {
+    if (!data.subject || !data.message) {
       const newErrors: { [key: string]: string } = {};
-      if (!data.email) newErrors.email = 'Email is required';
-      if (!data.subject) newErrors.subject = 'Subject is required';
-      if (!data.message) newErrors.message = 'Message is required';
+      if (!data.subject) newErrors.subject = "Subject is required";
+      if (!data.message) newErrors.message = "Message is required";
       setErrors(newErrors);
-      setProcessing(false);
       return;
     }
 
     // Create mailto link with form data
-    const mailtoLink = `mailto:hello@pjsalita.com?subject=${encodeURIComponent(data.subject)}&body=${encodeURIComponent(
-      `${data.message}`
-    )}`;
+    const mailtoLink = `mailto:hello@pjsalita.com?subject=${encodeURIComponent(data.subject)}&body=${encodeURIComponent(`${data.message}`)}`;
 
     window.location.href = mailtoLink;
-    setData({ email: '', subject: '', message: '' });
-    setStatus('success');
-    setProcessing(false);
+    setData({ subject: "", message: "" });
+    setStatus("success");
   };
 
   return (
-    <MorphingDialog transition={{ duration: 0.3, ease: 'easeInOut' }}>
+    <MorphingDialog transition={{ duration: 0.3, ease: "easeInOut" }}>
       <MorphingDialogTrigger>
         <Button className={buttonVariants({ variant })} {...props}>
           {children}
@@ -84,23 +71,10 @@ export function ContactButton({ children, variant, ...props }: ContactButtonProp
               <CardContent>
                 <div className="grid w-full items-center gap-4">
                   <div className="flex flex-col space-y-1.5">
-                    <Label htmlFor="email">Email</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      className={cn(errors.email && 'border-destructive')}
-                      placeholder="your@email.com"
-                      value={data.email}
-                      onChange={handleChange}
-                    />
-                    {errors.email && <small className="text-destructive">{errors.email}</small>}
-                  </div>
-
-                  <div className="flex flex-col space-y-1.5">
                     <Label htmlFor="subject">Subject</Label>
                     <Input
                       id="subject"
-                      className={cn(errors.subject && 'border-destructive')}
+                      className={cn(errors.subject && "border-destructive")}
                       placeholder="What's this about?"
                       value={data.subject}
                       onChange={handleChange}
@@ -112,7 +86,7 @@ export function ContactButton({ children, variant, ...props }: ContactButtonProp
                     <Label htmlFor="message">Message</Label>
                     <Textarea
                       id="message"
-                      className={cn(errors.message && 'border-destructive')}
+                      className={cn(errors.message && "border-destructive")}
                       placeholder="Your message..."
                       rows={4}
                       value={data.message}
@@ -128,7 +102,7 @@ export function ContactButton({ children, variant, ...props }: ContactButtonProp
                   Open Mail Client
                 </Button>
 
-                {status === 'error' && <p className="text-sm text-red-500">Failed to send message. Please try again.</p>}
+                {status === "error" && <p className="text-sm text-red-500">Failed to send message. Please try again.</p>}
               </CardFooter>
             </Card>
           </form>
